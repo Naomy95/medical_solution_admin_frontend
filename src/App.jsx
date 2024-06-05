@@ -1,18 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// App.js
+import React from 'react';
+import Sidebar from './components/common/Sidebar';
+import Header from './components/common/Header';
+import Dashboard from './components/Dashboard';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <p>Meficare Admin site</p>
-       </div>
-    </>
-  )
+    <div className="app">
+      <Sidebar />
+      <div className="main-content">
+        <Header />
+        <Dashboard />
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
