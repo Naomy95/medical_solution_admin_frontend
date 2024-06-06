@@ -1,28 +1,28 @@
+import { useQuery } from '@tanstack/react-query'
 import React from 'react'
-import doc from '../assets/images/doctor-logo.png';
+import { getNurses } from '../lib/api/nurse'
 import pen from '../assets/images/pen.png';
 import del from '../assets/images/delete.png';
-import { getDoctors } from '../lib/api/doctor';
-import { useQuery } from "@tanstack/react-query";
+import nur from '../assets/images/nurse.png';
 
-const DotorPage = () => {
 
+const NursingPage = () => {
     const {
-        data: doctors,
+        data: nurses,
         isLoading,
         isError,
       } = useQuery({
         queryKey: ['blogs'],
-        queryFn: () => getDoctors(),
+        queryFn: () => getNurses(),
       })
       
       if (isError) return <div>Error</div>
       if (isLoading) return <div>Loading</div>
-      console.log(doctors)
+      console.log(nurses)
 
 
   return (
-    <div className='p-4 gap-2 flex justify-items-stretch'>
+    <div className='p-4 gap-10 flex justify-items-stretch'>
       
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -42,7 +42,7 @@ const DotorPage = () => {
                     Phone No
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Doctor Id
+                    Nurse Id
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Enrollment Date
@@ -50,33 +50,33 @@ const DotorPage = () => {
             </tr>
         </thead>
         <tbody>
-           {doctors.map((doctor,id)=>(
+           {nurses.map((nurse,id)=>(
              <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                     <img style={{width:'50px', height:'50px'}} src={doc} alt="" />
+                     <img style={{width:'50px', height:'50px'}} src={nur} alt="" />
                  </th>
                 
                  <th scope="row" class="px-6 py-4 font-medium text-gray whitespace-nowrap dark:text-white">
-                    {doctor.name}
+                    {nurse.name}
                  </th>
                  <th scope="row" class="px-6 py-4 font-medium text-gray whitespace-nowrap dark:text-white">
-                    {doctor.email}
+                    {nurse.email}
                  </th>
                  <th scope="row" class="px-6 py-4 font-medium text-gray whitespace-nowrap dark:text-white">
-                    {doctor.phone_no}
+                    {nurse.phone_no}
                  </th>
                  <th scope="row" class="px-6 py-4 font-medium text-gray whitespace-nowrap dark:text-white">
-                    {doctor.doctor_id}
+                    {nurse.nurse_id}
                  </th>
                  <th scope="row" class="px-6 py-4 font-medium text-gray whitespace-nowrap dark:text-white">
-                    {doctor.enrolment_date}
+                    {nurse.enrolment_date}
                  </th>
 
                  <td class="px-6 py-4">
-                    <img src={pen} alt="" />
+                    <img style={{width:"20px", height:"20px", }} src={pen} alt="" />
                 </td>
                  <td class="px-6 py-4">
-                    <img src={del} alt="" />
+                    <img style={{width:"20px", height:"20px", }}src={del} alt="" />
                 </td>
                
              </tr>
@@ -85,9 +85,10 @@ const DotorPage = () => {
     </table>
 </div>
 
-<button className='p-2 text-white h-16 bg-buttoncolor'>Add new Doctor</button>
+<button className='p-4 pb-2 text-white h-16 bg-buttoncolor'>Add new Nurse</button>
+
     </div>
   )
 }
 
-export default DotorPage
+export default NursingPage

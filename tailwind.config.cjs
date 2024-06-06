@@ -6,6 +6,10 @@ export default {
 
   ],
   theme: {
+    fontFamily: {
+      sans:["Open Sans"],
+      poppins: ['Poppins', 'sans-serif'],
+    },
     extend: {
       colors: {
         black: '#000000',
